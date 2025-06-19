@@ -1,0 +1,14 @@
+authify:
+  database:
+    users:
+      - authify_db_user
+
+teampulse:
+  database:
+    users:
+      - teampulse_db_user
+      
+dev:
+  database:
+    users:
+      - dev_db_user

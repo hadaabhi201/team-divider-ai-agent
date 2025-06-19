@@ -1,0 +1,47 @@
+# Terraform state
+*.tfstate
+*.tfstate.backup
+*.tfstate.*
+.terraform/
+
+# Terraform crash logs
+crash.log
+
+# Terraform plan files
+*.tfplan
+
+# Sensitive variable overrides
+*.auto.tfvars
+*.tfvars
+
+# Local override config
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# CLI local settings
+.terraform.lock.hcl
+
+# Kubernetes config (optional)
+kubeconfig
+.kube/
+
+# Helm cache and files (optional)
+.helm/
+helmfile.lock
+
+# System files
+.DS_Store
+Thumbs.db
+
+# OS or IDE folders
+.idea/
+.vscode/
+*.swp
+*.swo
+
+vault-init.json
+tmp/
+
+injector_pod_tls.crtkubectl

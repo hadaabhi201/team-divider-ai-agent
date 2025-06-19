@@ -16,6 +16,17 @@ This project sets up **Istio service mesh** on a **Minikube cluster** using **Te
 - **Minikube:** [Install Guide](https://minikube.sigs.k8s.io/docs/start/)
 - **Docker Desktop:** [Install Docker](https://www.docker.com/products/docker-desktop/)
 
+
+
+Install required tools on Windows using [Chocolatey](https://chocolatey.org/) and set up pre-commit:
+
+```powershell
+choco install git python shellcheck tflint -y
+pip install pre-commit
+pre-commit clean
+pre-commit install
+pre-commit run --all-files
+```
 ---
 
 ## 🚀 Start Minikube (Profile: `minikube-dev`)

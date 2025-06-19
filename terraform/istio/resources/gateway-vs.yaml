@@ -1,0 +1,39 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: team-divider
+  namespace: istio-system
+spec:
+  hosts:
+    - team-divider.local
+  gateways:
+    - team-divider-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /teampulse/
+      rewrite:
+        uri: /
+      route:
+        - destination:
+            host: teampulse.team-divider.svc.cluster.local
+            port:
+              number: 80
+    - match:
+        - uri:
+            prefix: /authify/
+      rewrite:
+        uri: /
+      route:
+        - destination:
+            host: authify.team-divider.svc.cluster.local
+            port:
+              number: 80
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: sidekick.team-divider.svc.cluster.local
+            port:
+              number: 80

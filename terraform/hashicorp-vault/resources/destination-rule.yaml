@@ -1,0 +1,37 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: vault
+  namespace: vault
+spec:
+  host: vault.vault.svc.cluster.local
+  subsets:
+    - name: vault-ui
+      labels:
+        app.kubernetes.io/name: vault
+  trafficPolicy:
+    tls:
+      mode: DISABLE
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: sidekick-dr
+  namespace: istio-system
+spec:
+  host: sidekick.team-divider.svc.cluster.local
+  trafficPolicy:
+    tls:
+      mode: STRICT
+
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: teampulse-dr
+  namespace: istio-system
+spec:
+  host: teampulse.team-divider.svc.cluster.local
+  trafficPolicy:
+    tls:
+      mode: DISABLE

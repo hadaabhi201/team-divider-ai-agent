@@ -1,0 +1,28 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: sidekick-allow-ingress-and-self
+  namespace: team-divider
+spec:
+  selector:
+    matchLabels:
+      app: sidekick
+  rules:
+  - from:
+    - source:
+        principals:
+          - cluster.local/ns/istio-system/sa/istio-ingress
+          - cluster.local/ns/team-divider/sa/sidekick
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: teampulse-allow-ingress-and-self
+  namespace: team-divider
+spec:
+  selector:
+    matchLabels:
+      app: teampulse
+  action: ALLOW
+  rules:
+    - {}
