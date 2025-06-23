@@ -1,0 +1,14 @@
+run:
+  timeout: 2m
+
+issues:
+  exclude-dirs:
+    - vendor
+
+linters:
+  enable:
+    - govet
+    - gofmt
+    - staticcheck
+    - errcheck
+    - revive

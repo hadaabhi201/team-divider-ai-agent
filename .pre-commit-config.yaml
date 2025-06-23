@@ -6,3 +6,11 @@ repos:
         entry: bash -c 'cd terraform && pre-commit run --all-files'
         language: system
         pass_filenames: false
+
+  - repo: local
+    hooks:
+      - id: recurse-app-pre-commit
+        name: Run app-level pre-commits
+        entry: bash -c 'for d in apps/*; do [ -f "$d/.pre-commit-config.yaml" ] && (cd "$d" && pre-commit run --all-files); done'
+        language: system
+        pass_filenames: false
