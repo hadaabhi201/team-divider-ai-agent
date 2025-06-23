@@ -1,38 +1,8 @@
 repos:
-  - repo: https://github.com/koalaman/shellcheck-precommit
-    rev: v0.10.0
-    hooks:
-      - id: shellcheck
-        name: ShellCheck
-        entry: shellcheck
-        language: system
-        types_or: [file]
-        files: \.sh$
-
-  - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.99.4
-    hooks:
-      - id: terraform_fmt
-      - id: terraform_validate
-      
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
-    hooks:
-      - id: end-of-file-fixer
-
   - repo: local
     hooks:
-      - id: tflint
-        name: tflint
-        entry: bash -c 'tflint --chdir "$(pwd)"'
+      - id: terraform-pre-commit
+        name: Run terraform/.pre-commit-config.yaml
+        entry: bash -c 'cd terraform && pre-commit run --all-files'
         language: system
-        types: [terraform]
-  
-  - repo: local
-    hooks:
-      - id: fix-line-endings
-        name: Fix line endings to LF (all files)
-        entry: bash -c 'dos2unix "$@"'
-        language: system
-        files: . 
-        pass_filenames: true
+        pass_filenames: false
