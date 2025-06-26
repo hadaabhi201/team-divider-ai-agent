@@ -14,3 +14,10 @@ repos:
         entry: bash -c 'for d in apps/*; do [ -f "$d/.pre-commit-config.yaml" ] && (cd "$d" && pre-commit run --all-files); done'
         language: system
         pass_filenames: false
+  - repo: local
+    hooks:
+      - id: sidekick-pre-commit
+        name: Run sidekick/.pre-commit-config.yaml
+        entry: bash -c 'cd sidekick && pre-commit run --all-files'
+        language: system
+        pass_filenames: false

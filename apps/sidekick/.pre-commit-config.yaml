@@ -1,0 +1,16 @@
+repos:
+  - repo: local
+    hooks:
+      - id: eslint-sidekick
+        name: ESLint (flat config) for sidekick
+        entry: bash -c "cd apps/sidekick && npx eslint ."
+        language: system
+        pass_filenames: false
+
+  - repo: local
+    hooks:
+      - id: prettier-sidekick
+        name: Prettier for sidekick
+        entry: bash -c "cd apps/sidekick && npx prettier --write ."
+        language: system
+        pass_filenames: false
